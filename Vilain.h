@@ -1,4 +1,5 @@
 #pragma once
+<<<<<<< HEAD
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -19,3 +20,5 @@ public:
 private:
 	string objectif_;
 };
+=======
+>>>>>>> edbf3ff7ff04683fb9dab3008cf0cfba3acef341
