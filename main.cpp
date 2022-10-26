@@ -2,8 +2,12 @@
 #include <fstream>
 #include <sstream>
 #include <cassert>
+#include <vector>
+#include "cppitertools/range.hpp"
 #include "bibliotheque_cours.hpp"
+
 using namespace std;
+using namespace iter;
 
 ifstream ouvrirFichierBinaire(const string& nomFichier)
 {
@@ -19,6 +23,46 @@ void testsPourCouvertureLectureBinaire()
 	assert(lireUintTailleVariable(iss) == 0x4321);
 	assert(lireUintTailleVariable(iss) == 0xFEDCBA98);
 }
+vector<Vilain>& lireVilains(istream& fichier) {
+	vector<Vilain> vilains;
+	size_t nVilains = lireUintTailleVariable(fichier);
+
+	for (size_t i : range(nVilains)) {
+		Vilain vilain;
+
+		vilain.nom = lireString(fichier);
+		vilain.jeuParution = lireString(fichier);
+		vilain.objectif = lireString(fichier);
+
+		vilains.push_back(vilain);
+	}
+	return vilains;
+}
+
+vector<Hero>& lireHeros(istream& fichier) {
+	vector<Hero> heros;
+	size_t nHeros = lireUintTailleVariable(fichier);
+
+	for (size_t i : range(nHeros)) {
+		Hero hero;
+
+		hero.name = lireString(fichier);
+		hero.jeuParution = lireString(fichier);
+		hero.ennemi = lireString(fichier);
+
+		vector<string> allies;
+		size_t nAllies = lireUintTailleVariable(fichier);
+		
+		for (size_t i : range(nAllies)) {
+			allies.push_back(lireString(fichier));
+		}
+		hero.allies = allies;
+
+		heros.push_back(hero);
+	}
+	return heros;
+}
+
 
 int main()
 {
@@ -40,6 +84,18 @@ int main()
 	// Ouverture des fichiers binaires
 	ifstream fichierHeros = ouvrirFichierBinaire("heros.bin");
 	ifstream fichierVilains = ouvrirFichierBinaire("vilains.bin");
+
+	vector<Hero> heros = lireHeros(fichierHeros);
+	vector<Vilain> vilains = lireVilains(fichierVilains);
+
+	for (Hero& hero : heros) {
+		hero.afficher();
+	}
+
+	for (Vilain& vilain : vilains) {
+		vilain.afficher();
+	}
+
 
 	//TODO: Votre code pour le main commence ici (mais vous pouvez aussi ajouter/modifier du code avant si nécessaire)
 
