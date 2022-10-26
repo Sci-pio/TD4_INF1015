@@ -17,11 +17,9 @@ public:
 	Personnage(string& nom, string& jeuParution) : nom_(nom), jeuParution_(jeuParution) {}
 	~Personnage() = default;
 
-	void virtual changerCouleur(string& couleur) {
-		cout << "\n\033[90m";
-	}
+	void virtual changerCouleur(string couleur) const{};
 
-	void virtual afficher(ostream& os) {
+	void virtual afficher(ostream& os) const {
 
 		os << nom_ << endl;
 		os << jeuParution_ << endl;

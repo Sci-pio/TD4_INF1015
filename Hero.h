@@ -25,6 +25,5 @@ public:
 private:
 	vector<string> listeDesAllies_;
 	string Ennemi_;
-
 };
 
