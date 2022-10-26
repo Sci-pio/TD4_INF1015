@@ -36,3 +36,4 @@ string lireString(istream& fichier)
 	fichier.read((char*)&texte[0], streamsize(sizeof(texte[0])) * texte.length());
 	return texte;
 }
+//Test main

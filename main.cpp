@@ -29,6 +29,8 @@ int main()
 	bibliotheque_cours::activerCouleursAnsi();
 	#pragma endregion
 	
+	
+	//Test main
 	testsPourCouvertureLectureBinaire();
 
 	// Trait de separation
