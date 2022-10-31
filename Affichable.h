@@ -12,8 +12,8 @@ using namespace std;
 
 class Affichable {
 public:
-	void virtual afficher(ostream& os) = 0;
-	void virtual changerCouleur(string& couleur) = 0;
+	void virtual afficher(ostream& os) const = 0;
+	void virtual changerCouleur(ostream& os, const string& couleur) const = 0;
 
 
 private:

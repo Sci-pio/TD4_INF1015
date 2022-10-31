@@ -4,26 +4,27 @@
 #include <vector>
 #include "Personnage.h"
 
+
 using namespace std;
 
-class Hero : public Personnage {
+class Hero : virtual public Personnage {
 public:
-	void virtual changerCouleur(string couleur) const override {
-	if (couleur=="rouge") { cout << "\n\033[90m"; }
-	else if (couleur == "default") { cout << "\n\033[0m"; }
-	}
+	Hero() = default;
+	Hero (string& nom, string& jeuDeParution, string& Ennemi, vector<string>& listeDesAllies): Personnage(nom, jeuDeParution), Ennemi_(Ennemi), listeDesAllies_(listeDesAllies){}
+	~Hero() = default;
 
-	void virtual afficher(ostream& os) const override{ 
-		changerCouleur("rouge");
-		os << Ennemi_ << endl;
-		// faut faire os << les trucs du vecteur
-
-		changerCouleur("default");
-	
+	void afficher(ostream& os) const override{ 
+		changerCouleur(os , "bleu");
+		Personnage::afficher(os); //afficher les attributs d'un Hero qui sont des attributs de personnage (nom, jeu de parution)
+		os << "Ennemi: " << Ennemi_ << endl;
+		os << "Alliés: " << endl;
+		for (int i = 0; i < listeDesAllies_.size(); i++) { os << listeDesAllies_[i] << endl; }
+		changerCouleur(os, "default");
 	};
 
 private:
-	vector<string> listeDesAllies_;
 	string Ennemi_;
+	vector<string> listeDesAllies_;
+
 };
 

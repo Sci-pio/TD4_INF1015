@@ -5,6 +5,11 @@
 #include <vector>
 #include "cppitertools/range.hpp"
 #include "bibliotheque_cours.hpp"
+#include "Vilain.h"
+#include "VilainHeros.h"
+#include "Personnage.h"
+#include "Hero.h"
+#include "Affichable.h"
 
 using namespace std;
 using namespace iter;

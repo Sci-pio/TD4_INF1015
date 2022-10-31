@@ -17,12 +17,15 @@ public:
 	Personnage(string& nom, string& jeuParution) : nom_(nom), jeuParution_(jeuParution) {}
 	~Personnage() = default;
 
-	void virtual changerCouleur(string couleur) const{};
+	void virtual changerCouleur(ostream& os, const string& couleur) const override{
+		if (couleur == "rouge") { os << "\n\033[91m"; }
+		else if (couleur == "bleu") { os << "\n\033[94m"; }
+		else { os << "\n\033[0m"; }
+	};
 
 	void virtual afficher(ostream& os) const {
-
-		os << nom_ << endl;
-		os << jeuParution_ << endl;
+		os << "Nom: " << nom_ << endl;
+		os << "Jeu de parution: " << jeuParution_ << endl;
 	};
 
 

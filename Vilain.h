@@ -8,14 +8,19 @@
 
 using namespace std;
 
-class Vilain: public Personnage {
+class Vilain: virtual public Personnage {
 public:
-	Vilain();
-	Vilain(string& nom, string& jeuParution, string& objectif);
+	Vilain() = default;
+	Vilain(string& nom, string& jeuDeParution, string& objectif): Personnage(nom, jeuDeParution), objectif_(objectif){}
 	~Vilain() = default;
 
-	void virtual changerCouleur(string& couleur)  override;
-	void virtual afficher(ostream& os)  override;
+
+	void afficher(ostream& os)  const override {
+		Personnage::afficher(os);
+		changerCouleur(os, "rouge");
+		os << "Objetif: " << objectif_ << endl;
+		changerCouleur(os, "default");
+	};
 
 private:
 	string objectif_;
