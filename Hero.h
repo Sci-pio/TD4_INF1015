@@ -24,8 +24,8 @@ public:
 	virtual ~Hero() = default;
 
 	void afficher(ostream& os) const override{ 
-		changerCouleur(os , Couleur :: bleu);
 		Personnage::afficher(os); //afficher les attributs d'un Hero qui sont des attributs de personnage (nom, jeu de parution)
+		changerCouleur(os, Couleur::bleu);
 		os << "Ennemi: " << Ennemi_ << endl;
 		os << "Alliés: " << endl;
 		for (int i = 0; i < listeDesAllies_.size(); i++) { os << listeDesAllies_[i] << endl; }

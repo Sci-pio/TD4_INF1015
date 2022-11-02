@@ -28,7 +28,7 @@ void testsPourCouvertureLectureBinaire()
 	assert(lireUintTailleVariable(iss) == 0xFEDCBA98);
 }
 
-vector<Vilain>& lireVilains(istream& fichier) {
+vector<Vilain> lireVilains(istream& fichier) {
 	vector<Vilain> vilains;
 	size_t nVilains = lireUintTailleVariable(fichier);
 
@@ -39,7 +39,7 @@ vector<Vilain>& lireVilains(istream& fichier) {
 	return vilains;
 }
 
-vector<Hero>& lireHeros(istream& fichier) {
+vector<Hero> lireHeros(istream& fichier) {
 	vector<Hero> heros;
 	size_t nHeros = lireUintTailleVariable(fichier);
 
@@ -77,10 +77,12 @@ int main()
 
 	for (Hero& hero : heros) {
 		hero.afficher(cout);
+		cout << trait << endl;
 	}
 
 	for (Vilain& vilain : vilains) {
 		vilain.afficher(cout);
+		cout << trait << endl;
 	}
 
 
