@@ -49,7 +49,8 @@ vector<Hero>& lireHeros(istream& fichier) {
 	size_t nHeros = lireUintTailleVariable(fichier);
 
 	for (size_t i : range(nHeros)) {
-		Hero hero;
+		Hero hero(fichier);
+
 
 		hero.name = lireString(fichier);
 		hero.jeuParution = lireString(fichier);

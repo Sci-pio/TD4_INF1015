@@ -5,7 +5,7 @@
 
 class VilainHeros: public Hero, public Vilain {
 public:
-	//VilainHeros(string& nom, string& jeuDeParution, string& objectif, string& ennemi, vector<string> listeDesAllies, string& missionSpeciale, Hero& hero, Vilain& vilain): 
+	VilainHeros(string& nom, string& jeuDeParution, string& objectif, string& ennemi, vector<string> listeDesAllies, string& missionSpeciale, Hero& hero, Vilain& vilain): Personnage(nom, jeuDeParution), 
 
 private:
 

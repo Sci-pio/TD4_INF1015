@@ -4,12 +4,13 @@
 #include <vector>
 #include "Personnage.h"
 
-
 using namespace std;
 
 class Hero : virtual public Personnage {
 public:
 	Hero() = default;
+	Hero(istream& fichier): Personnage(fichier), Ennemi_(lireString(fichier)) {
+	}
 	Hero (string& nom, string& jeuDeParution, string& Ennemi, vector<string>& listeDesAllies): Personnage(nom, jeuDeParution), Ennemi_(Ennemi), listeDesAllies_(listeDesAllies){}
 	~Hero() = default;
 
