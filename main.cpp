@@ -28,17 +28,13 @@ void testsPourCouvertureLectureBinaire()
 	assert(lireUintTailleVariable(iss) == 0x4321);
 	assert(lireUintTailleVariable(iss) == 0xFEDCBA98);
 }
+
 vector<Vilain>& lireVilains(istream& fichier) {
 	vector<Vilain> vilains;
 	size_t nVilains = lireUintTailleVariable(fichier);
 
 	for (size_t i : range(nVilains)) {
-		Vilain vilain;
-
-		vilain.nom = lireString(fichier);
-		vilain.jeuParution = lireString(fichier);
-		vilain.objectif = lireString(fichier);
-
+		Vilain vilain(fichier);
 		vilains.push_back(vilain);
 	}
 	return vilains;
@@ -50,20 +46,6 @@ vector<Hero>& lireHeros(istream& fichier) {
 
 	for (size_t i : range(nHeros)) {
 		Hero hero(fichier);
-
-
-		hero.name = lireString(fichier);
-		hero.jeuParution = lireString(fichier);
-		hero.ennemi = lireString(fichier);
-
-		vector<string> allies;
-		size_t nAllies = lireUintTailleVariable(fichier);
-		
-		for (size_t i : range(nAllies)) {
-			allies.push_back(lireString(fichier));
-		}
-		hero.allies = allies;
-
 		heros.push_back(hero);
 	}
 	return heros;
@@ -95,11 +77,11 @@ int main()
 	vector<Vilain> vilains = lireVilains(fichierVilains);
 
 	for (Hero& hero : heros) {
-		hero.afficher();
+		hero.afficher(cout);
 	}
 
 	for (Vilain& vilain : vilains) {
-		vilain.afficher();
+		vilain.afficher(cout);
 	}
 
 
