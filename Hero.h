@@ -1,18 +1,16 @@
 #pragma once
-#include "lectureBinaire.hpp"
 #include <fstream>
 #include <sstream>
 #include <cassert>
 #include <vector>
 #include "cppitertools/range.hpp"
 #include "bibliotheque_cours.hpp"
-#include "Vilain.h"
-#include "VilainHeros.h"
 #include "Personnage.h"
-#include "Hero.h"
-#include "Affichable.h"
+#include "lectureBinaire.hpp"
+
 
 using namespace std;
+using namespace iter;
 
 class Hero : virtual public Personnage {
 public:

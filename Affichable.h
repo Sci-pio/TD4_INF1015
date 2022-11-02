@@ -9,6 +9,7 @@
 #include <string>
 
 using namespace std;
+using namespace iter;
 
 enum class Couleur {
 	rouge,

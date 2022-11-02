@@ -9,7 +9,6 @@
 #include "VilainHeros.h"
 #include "Personnage.h"
 #include "Hero.h"
-#include "Affichable.h"
 
 using namespace std;
 using namespace iter;
