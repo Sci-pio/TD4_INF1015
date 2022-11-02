@@ -14,6 +14,7 @@ using namespace std;
 class Personnage: public Affichable {
 public:
 	Personnage(istream& fichier): nom_(lireString(fichier)), jeuParution_(lireString(fichier)) {}
+
 	virtual ~Personnage() = default;
 
 	void changerCouleur(ostream& os, const Couleur& couleur) const override{
