@@ -24,7 +24,7 @@ public:
 
 	void  afficher(ostream& os) const override {
 		os << "Nom: " << nom_ << endl;
-		os << "Jeu de parution: " << jeuParution_ << endl;
+		os << "Jeu de parution: " << jeuParution_;
 	};
 
 

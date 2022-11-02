@@ -14,7 +14,8 @@ using namespace iter;
 
 class Hero : virtual public Personnage {
 public:
-	Hero(istream& fichier): Personnage(fichier), Ennemi_(lireString(fichier)) {;
+	Hero(istream& fichier) : Personnage(fichier), Ennemi_(lireString(fichier)) {
+		;
 		size_t nAllies = lireUintTailleVariable(fichier);
 
 		for (size_t i : range(nAllies)) {
@@ -23,13 +24,13 @@ public:
 	}
 	virtual ~Hero() = default;
 
-	void afficher(ostream& os) const override{ 
+	void afficher(ostream& os) const override {
 		Personnage::afficher(os); //afficher les attributs d'un Hero qui sont des attributs de personnage (nom, jeu de parution)
 		changerCouleur(os, Couleur::bleu);
 		os << "Ennemi: " << Ennemi_ << endl;
 		os << "Alliés: " << endl;
-		for (int i = 0; i < listeDesAllies_.size(); i++) { os << listeDesAllies_[i] << endl; }
-		changerCouleur(os, Couleur :: defaut);
+		for (int i = 0; i < listeDesAllies_.size(); i++) { os << "\t" << listeDesAllies_[i] << endl; }
+		changerCouleur(os, Couleur::defaut);
 	};
 
 private:
