@@ -17,7 +17,7 @@ public:
 	Personnage(string& nom, string& jeuParution) : nom_(nom), jeuParution_(jeuParution) {}
 	~Personnage() = default;
 
-	void virtual changerCouleur(ostream& os, const string& couleur) const override{
+	void virtual changerCouleur(ostream& os, const string& couleur) const{
 		if (couleur == "rouge") { os << "\n\033[91m"; }
 		else if (couleur == "bleu") { os << "\n\033[94m"; }
 		else { os << "\n\033[0m"; }
