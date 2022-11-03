@@ -39,13 +39,13 @@ vector<Vilain> lireVilains(istream& fichier) {
 	return vilains;
 }
 
-vector<Hero> lireHeros(istream& fichier) {
-	vector<Hero> heros;
+unique_ptr<vector<Hero>> lireHeros(istream& fichier) {
+	unique_ptr<vector<Hero>> heros = make_unique<vector<Hero>>();
 	size_t nHeros = lireUintTailleVariable(fichier);
 
 	for (size_t i : range(nHeros)) {
 		Hero hero(fichier);
-		heros.push_back(hero);
+		heros->push_back(hero);
 	}
 	return heros;
 }
@@ -72,18 +72,28 @@ int main()
 	ifstream fichierHeros = ouvrirFichierBinaire("heros.bin");
 	ifstream fichierVilains = ouvrirFichierBinaire("vilains.bin");
 
-	vector<Hero> heros = lireHeros(fichierHeros);
+	// 1. Creation des vecteurs de Hero, Vilain et Personnage + Affichage
+	unique_ptr<vector<Hero>> heros = move(lireHeros(fichierHeros));
 	vector<Vilain> vilains = lireVilains(fichierVilains);
+	vector<unique_ptr<Personnage>> personnages;
 
-	for (Hero& hero : heros) {
+	for (Hero& hero : *heros) {
 		hero.afficher(cout);
 		cout << trait << endl;
+		personnages.push_back(make_unique<Hero>(hero));
 	}
 
 	for (Vilain& vilain : vilains) {
 		vilain.afficher(cout);
 		cout << trait << endl;
+		personnages.push_back(make_unique<Vilain>(vilain));
 	}
+
+	for (unique_ptr<Personnage>& personnage : personnages) { 
+		personnage->afficher(cout); 
+		cout << trait << endl;
+	}
+
 
 
 	//TODO: Votre code pour le main commence ici (mais vous pouvez aussi ajouter/modifier du code avant si nécessaire)
