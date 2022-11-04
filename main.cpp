@@ -28,13 +28,13 @@ void testsPourCouvertureLectureBinaire()
 	assert(lireUintTailleVariable(iss) == 0xFEDCBA98);
 }
 
-vector<Vilain> lireVilains(istream& fichier) {
-	vector<Vilain> vilains;
+unique_ptr<vector<Vilain>> lireVilains(istream& fichier) {
+	unique_ptr<vector<Vilain>> vilains = make_unique<vector<Vilain>>();
 	size_t nVilains = lireUintTailleVariable(fichier);
 
 	for (size_t i : range(nVilains)) {
 		Vilain vilain(fichier);
-		vilains.push_back(vilain);
+		vilains->push_back(vilain);
 	}
 	return vilains;
 }
@@ -76,7 +76,7 @@ int main()
 
 	// 1. Creation des vecteurs de Hero, Vilain et Personnage + affichage
 	unique_ptr<vector<Hero>> heros = move(lireHeros(fichierHeros));
-	vector<Vilain> vilains = lireVilains(fichierVilains);
+	unique_ptr<vector<Vilain>> vilains = move(lireVilains(fichierVilains));
 	vector<unique_ptr<Personnage>> personnages;
 
 	for (Hero& hero : *heros) {
@@ -87,7 +87,7 @@ int main()
 
 	cout << ligneSeparation << endl;
 
-	for (Vilain& vilain : vilains) {
+	for (Vilain& vilain : *vilains) {
 		cout << trait << endl;
 		vilain.afficher(cout);
 		personnages.push_back(make_unique<Vilain>(vilain));
