@@ -9,9 +9,19 @@
 #include "Personnage.h"
 #include "Hero.h"
 
-//class VilainHeros: public Hero, public Vilain, public Personnage {
-//public:
-//	VilainHeros(string& nom, string& jeuDeParution, string& objectif, string& ennemi, vector<string> listeDesAllies, string& missionSpeciale, Hero& hero, Vilain& vilain): Personnage(nom, jeuDeParution), 
-//
-//
-//};
+class VilainHeros: public Hero, public Vilain, public Personnage {
+private:
+	string missionSpeciale_;
+
+public:
+	
+	void afficher(ostream& os) const override {
+		Personnage::changerCouleur(os,Couleur::vert);
+		//faire afficher ses attributs
+
+		Personnage::changerCouleur(os, Couleur::defaut);
+
+	}
+
+	/*VilainHeros(Hero& hero, Vilain& vilain): nom_("b")*/
+};

@@ -14,6 +14,7 @@ using namespace iter;
 enum class Couleur {
 	rouge,
 	bleu,
+	vert,
 	defaut
 };
 

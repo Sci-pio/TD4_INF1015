@@ -17,9 +17,9 @@ public:
 	virtual ~Vilain() = default;
 
 
-	void afficher(ostream& os)  const override {
+	void virtual afficher(ostream& os)  const override {
+		changerCouleur(os, Couleur::rouge);
 		Personnage::afficher(os);
-		changerCouleur(os, Couleur :: rouge);
 		os << "Objetif: " << objectif_ << endl;
 		changerCouleur(os, Couleur :: defaut);
 	};

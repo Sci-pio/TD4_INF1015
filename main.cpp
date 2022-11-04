@@ -68,31 +68,38 @@ int main()
 	static const string trait =
 		"═════════════════════════════════════════════════════════════════════════";
 
+	static const string ligneSeparation = "\n\033[95m═════════════════════════════════════════════════════════════════════════\n\033[0m";
+
 	// Ouverture des fichiers binaires
 	ifstream fichierHeros = ouvrirFichierBinaire("heros.bin");
 	ifstream fichierVilains = ouvrirFichierBinaire("vilains.bin");
 
-	// 1. Creation des vecteurs de Hero, Vilain et Personnage + Affichage
+	// 1. Creation des vecteurs de Hero, Vilain et Personnage + affichage
 	unique_ptr<vector<Hero>> heros = move(lireHeros(fichierHeros));
 	vector<Vilain> vilains = lireVilains(fichierVilains);
 	vector<unique_ptr<Personnage>> personnages;
 
 	for (Hero& hero : *heros) {
-		hero.afficher(cout);
 		cout << trait << endl;
+		hero.afficher(cout);
 		personnages.push_back(make_unique<Hero>(hero));
 	}
 
+	cout << ligneSeparation << endl;
+
 	for (Vilain& vilain : vilains) {
-		vilain.afficher(cout);
 		cout << trait << endl;
+		vilain.afficher(cout);
 		personnages.push_back(make_unique<Vilain>(vilain));
 	}
+	cout << ligneSeparation << endl;
 
 	for (unique_ptr<Personnage>& personnage : personnages) { 
-		personnage->afficher(cout); 
 		cout << trait << endl;
+		personnage->afficher(cout); 
 	}
+
+	cout << ligneSeparation << endl;
 
 
 

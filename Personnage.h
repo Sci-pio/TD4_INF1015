@@ -11,7 +11,7 @@
 
 using namespace std;
 
-class Personnage: public Affichable {
+class Personnage: virtual public Affichable {
 public:
 	Personnage(istream& fichier): nom_(lireString(fichier)), jeuParution_(lireString(fichier)) {}
 
@@ -20,6 +20,7 @@ public:
 	void virtual changerCouleur(ostream& os, const Couleur& couleur) const override{
 		if (couleur == Couleur :: rouge) { os << "\n\033[91m"; }
 		else if (couleur == Couleur::bleu) { os << "\n\033[94m"; }
+		else if (couleur == Couleur::vert) { os << "\n\033[92m"; }
 		else if (couleur == Couleur::defaut) { os << "\n\033[0m"; }
 	};
 
