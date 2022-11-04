@@ -14,6 +14,7 @@ using namespace std;
 class Personnage: virtual public Affichable {
 public:
 	Personnage(istream& fichier): nom_(lireString(fichier)), jeuParution_(lireString(fichier)) {}
+	Personnage() = default;
 
 	virtual ~Personnage() = default;
 
@@ -29,6 +30,8 @@ public:
 		os << "Jeu de parution: " << jeuParution_ << endl;
 	};
 
+	string virtual getNom() { return nom_; }
+	string virtual getJeuParution() { return jeuParution_; }
 
 private:
 	string nom_, jeuParution_;

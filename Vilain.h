@@ -24,6 +24,8 @@ public:
 		changerCouleur(os, Couleur :: defaut);
 	};
 
+	string getObjectif() { return objectif_; }
+
 private:
 	string objectif_;
 };

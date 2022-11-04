@@ -15,9 +15,13 @@ private:
 
 public:
 	
+	VilainHeros(Hero& hero, Vilain& vilain) : Hero(hero), Vilain(vilain), missionSpeciale_(vilain.getObjectif()+" - "+hero.getJeuParution()) { }
+
 	void afficher(ostream& os) const override {
 		Personnage::changerCouleur(os,Couleur::vert);
-		//faire afficher ses attributs
+		
+		Personnage::afficher(cout);
+		//cout << "Mission speciale: " << Vilain::getObjectif() << "dans le monde de " << Hero::getJeuParution() << endl; // erreur
 
 		Personnage::changerCouleur(os, Couleur::defaut);
 

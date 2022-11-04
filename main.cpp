@@ -101,7 +101,11 @@ int main()
 
 	cout << ligneSeparation << endl;
 
+	vector<Hero> heros1 = *heros;
+	vector<Vilain> vilains1 = *vilains;
 
+	VilainHeros v = VilainHeros(heros1[0], vilains1[0]);
+	v.afficher(cout);
 
 	//TODO: Votre code pour le main commence ici (mais vous pouvez aussi ajouter/modifier du code avant si nécessaire)
 
