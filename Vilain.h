@@ -24,6 +24,10 @@ public:
 		changerCouleur(os, Couleur :: defaut);
 	};
 
+	void afficherAttributsSpecifiques(ostream& os) const {
+		os << "Objetif: " << objectif_ << endl;
+	}
+
 	string getObjectif() { return objectif_; }
 
 private:

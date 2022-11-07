@@ -16,14 +16,14 @@ private:
 
 public:
 	
-	VilainHeros(Hero& hero, Vilain& vilain) : Personnage(hero.getNom() + "-" + vilain.getNom(), hero.getJeuParution() + "-" + vilain.getJeuParution()), Hero(hero), Vilain(vilain), missionSpeciale_(vilain.getObjectif() + " - " + hero.getJeuParution()) { }
+	VilainHeros(Hero& hero, Vilain& vilain) : Personnage(hero.getNom() + "-" + vilain.getNom(), hero.getJeuParution() + "-" + vilain.getJeuParution()), Hero(hero), Vilain(vilain), missionSpeciale_(vilain.getObjectif() + " dans le monde de " + hero.getJeuParution()) { }
 
 	void afficher(ostream& os) const override {
 		Personnage::changerCouleur(os,Couleur::vert);
-		
 		Personnage::afficher(cout);
-		//cout << "Mission speciale: " << Vilain::getObjectif() << "dans le monde de " << Hero::getJeuParution() << endl; // erreur
-
+		Hero::afficherAttributSpecifiques(cout);
+		Vilain::afficherAttributsSpecifiques(cout);
+		cout << "Mission speciale: " << missionSpeciale_; // erreur
 		Personnage::changerCouleur(os, Couleur::defaut);
 
 	}
