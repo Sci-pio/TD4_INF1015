@@ -11,9 +11,10 @@
 
 using namespace std;
 
-class Personnage: virtual public Affichable {
+class Personnage: /*virtual*/ public Affichable {
 public:
 	Personnage(istream& fichier): nom_(lireString(fichier)), jeuParution_(lireString(fichier)) {}
+	Personnage (const string& nom, const string& jeuParution) : nom_(nom), jeuParution_(jeuParution){}
 	Personnage() = default;
 
 	virtual ~Personnage() = default;
@@ -30,8 +31,8 @@ public:
 		os << "Jeu de parution: " << jeuParution_ << endl;
 	};
 
-	string virtual getNom() { return nom_; }
-	string virtual getJeuParution() { return jeuParution_; }
+	virtual string getNom() { return nom_; }
+	virtual string getJeuParution() { return jeuParution_; }
 
 private:
 	string nom_, jeuParution_;

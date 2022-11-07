@@ -7,15 +7,16 @@
 #include "cppitertools/range.hpp"
 #include "bibliotheque_cours.hpp"
 #include "Personnage.h"
+#include "Vilain.h"
 #include "Hero.h"
 
-class VilainHeros: public Hero, public Vilain, public Personnage {
+class VilainHeros: public Hero, public Vilain {
 private:
 	string missionSpeciale_;
 
 public:
 	
-	VilainHeros(Hero& hero, Vilain& vilain) : Hero(hero), Vilain(vilain), missionSpeciale_(vilain.getObjectif()+" - "+hero.getJeuParution()) { }
+	VilainHeros(Hero& hero, Vilain& vilain) : Personnage(hero.getNom() + "-" + vilain.getNom(), hero.getJeuParution() + "-" + vilain.getJeuParution()), Hero(hero), Vilain(vilain), missionSpeciale_(vilain.getObjectif() + " - " + hero.getJeuParution()) { }
 
 	void afficher(ostream& os) const override {
 		Personnage::changerCouleur(os,Couleur::vert);

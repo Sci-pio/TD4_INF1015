@@ -32,6 +32,7 @@ public:
 		for (int i = 0; i < listeDesAllies_.size(); i++) { os << "\t" << listeDesAllies_[i] << endl; }
 		changerCouleur(os, Couleur::defaut);
 	};
+	virtual string getEnnemi() { return Ennemi_; }
 
 private:
 	string Ennemi_;
