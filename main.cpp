@@ -1,4 +1,9 @@
-﻿#include "lectureBinaire.hpp"
+﻿// Auteurs: Leonard Pouliot (2150965) et Kamil Maarite (2152653)
+// Date: 06 novembre 2022
+// cours: INF1015
+// Nom de la classe: main.cpp
+
+#include "lectureBinaire.hpp"
 #include <fstream>
 #include <sstream>
 #include <cassert>
@@ -54,9 +59,6 @@ unique_ptr<vector<Hero>> lireHeros(istream& fichier) {
 int main()
 {
 	#pragma region "Bibliothèque du cours"
-	// Permet sous Windows les "ANSI escape code" pour changer de couleur
-	// https://en.wikipedia.org/wiki/ANSI_escape_code ; les consoles Linux/Mac
-	// les supportent normalement par défaut.
 	bibliotheque_cours::activerCouleursAnsi();
 	#pragma endregion
 	
@@ -104,9 +106,8 @@ int main()
 	vector<Hero> heros1 = *heros;
 	vector<Vilain> vilains1 = *vilains;
 
-	VilainHeros v = VilainHeros(heros1[0], vilains1[0]);
+	VilainHeros v = VilainHeros(heros1[0], vilains1[2]);
 	v.afficher(cout);
 
-	//TODO: Votre code pour le main commence ici (mais vous pouvez aussi ajouter/modifier du code avant si nécessaire)
-
+	personnages.push_back(make_unique<VilainHeros>(v));
 }

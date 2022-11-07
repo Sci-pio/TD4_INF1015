@@ -1,32 +1,34 @@
+// Auteurs: Leonard Pouliot (2150965) et Kamil Maarite (2152653)
+// Date: 06 novembre 2022
+// cours: INF1015
+// Nom de la classe: VilainHeros.h
+
 #pragma once
-#include "lectureBinaire.hpp"
 #include <fstream>
-#include <sstream>
-#include <cassert>
-#include <vector>
-#include "cppitertools/range.hpp"
-#include "bibliotheque_cours.hpp"
 #include "Personnage.h"
+#include "lectureBinaire.hpp"
 #include "Vilain.h"
 #include "Hero.h"
 
-class VilainHeros: public Hero, public Vilain {
-private:
-	string missionSpeciale_;
-
+class VilainHeros : public Hero, public Vilain {
 public:
-	
-	VilainHeros(Hero& hero, Vilain& vilain) : Personnage(hero.getNom() + "-" + vilain.getNom(), hero.getJeuParution() + "-" + vilain.getJeuParution()), Hero(hero), Vilain(vilain), missionSpeciale_(vilain.getObjectif() + " dans le monde de " + hero.getJeuParution()) { }
+	VilainHeros(const Hero& hero, const Vilain& vilain) :
+		Hero(hero),
+		Vilain(vilain),
+		Personnage(vilain.getNom() + "-" + hero.getNom(),
+			vilain.getJeuParution() + "-" + hero.getJeuParution()),
+		missionSpeciale_(getObjectif() + " dans le monde de " + hero.getJeuParution())
+	{ }
 
-	void afficher(ostream& os) const override {
-		Personnage::changerCouleur(os,Couleur::vert);
+	void afficher(ostream& os) const override
+	{
+		Personnage::changerCouleur(os, Couleur::VERT);
 		Personnage::afficher(cout);
-		Hero::afficherAttributSpecifiques(cout);
 		Vilain::afficherAttributsSpecifiques(cout);
-		cout << "Mission speciale: " << missionSpeciale_; 
-		Personnage::changerCouleur(os, Couleur::defaut);
-
+		Hero::afficherAttributSpecifiques(cout);
+		cout << "Mission spéciale: " << missionSpeciale_;
 	}
 
-	/*VilainHeros(Hero& hero, Vilain& vilain): nom_("b")*/
+private:
+	string missionSpeciale_;
 };
