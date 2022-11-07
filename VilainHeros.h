@@ -23,7 +23,7 @@ public:
 		Personnage::afficher(cout);
 		Hero::afficherAttributSpecifiques(cout);
 		Vilain::afficherAttributsSpecifiques(cout);
-		cout << "Mission speciale: " << missionSpeciale_; // erreur
+		cout << "Mission speciale: " << missionSpeciale_; 
 		Personnage::changerCouleur(os, Couleur::defaut);
 
 	}

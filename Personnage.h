@@ -11,7 +11,7 @@
 
 using namespace std;
 
-class Personnage: /*virtual*/ public Affichable {
+class Personnage: public Affichable {
 public:
 	Personnage(istream& fichier): nom_(lireString(fichier)), jeuParution_(lireString(fichier)) {}
 	Personnage (const string& nom, const string& jeuParution) : nom_(nom), jeuParution_(jeuParution){}
