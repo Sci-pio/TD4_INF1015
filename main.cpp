@@ -76,7 +76,7 @@ int main()
 	ifstream fichierHeros = ouvrirFichierBinaire("heros.bin");
 	ifstream fichierVilains = ouvrirFichierBinaire("vilains.bin");
 
-	// 1. Creation des vecteurs de Hero, Vilain et Personnage + affichage
+	// Creation des vecteurs de Hero, Vilain et Personnage + affichage
 	unique_ptr<vector<Hero>> heros = move(lireHeros(fichierHeros));
 	unique_ptr<vector<Vilain>> vilains = move(lireVilains(fichierVilains));
 	vector<unique_ptr<Personnage>> personnages;
@@ -102,6 +102,8 @@ int main()
 	}
 
 	cout << ligneSeparation << endl;
+
+	//Creation d'un VilainHeros
 
 	vector<Hero> heros1 = *heros;
 	vector<Vilain> vilains1 = *vilains;

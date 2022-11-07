@@ -27,6 +27,7 @@ public:
 		Vilain::afficherAttributsSpecifiques(cout);
 		Hero::afficherAttributSpecifiques(cout);
 		cout << "Mission spéciale: " << missionSpeciale_;
+		Personnage::changerCouleur(os, Couleur::DEFAUT);
 	}
 
 private:
